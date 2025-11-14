@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bphpcpw5sh7ul"]
+
+[ext_resource type="PackedScene" uid="uid://rouyioqcdqm6" path="res://Entities/Player/player.tscn" id="1_k220b"]
+[ext_resource type="PackedScene" uid="uid://cbpxabi1vckev" path="res://World/Objects/Platform/platform.tscn" id="2_k220b"]
+[ext_resource type="Script" uid="uid://bci8gwgtcv6pl" path="res://World/player_camera.gd" id="2_sr7rc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_62w18"]
+distance = -102.0
+
+[node name="Game Manager" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_k220b")]
+position = Vector2(200, 400)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("2_sr7rc")
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(316, 545)
+shape = SubResource("WorldBoundaryShape2D_62w18")
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("2_k220b")]
+position = Vector2(294, 391)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("2_k220b")]
+position = Vector2(1376, 142)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("2_k220b")]
+position = Vector2(1222, 387)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("2_k220b")]
+position = Vector2(679, 227)

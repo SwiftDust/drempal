@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://rouyioqcdqm6"]
+
+[ext_resource type="Script" uid="uid://wvxamnnoku8f" path="res://Entities/Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://cwnwhlte1saol" path="res://icon.svg" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://camer6dgca8dq" path="res://Entities/Player/shield.gd" id="3_lu8i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
+size = Vector2(129, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyv8"]
+size = Vector2(193, 20)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4ntmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l8h54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_4ntmi")
+
+[node name="Shield" type="StaticBody2D" parent="." node_paths=PackedStringArray("player")]
+collision_layer = 2
+script = ExtResource("3_lu8i8")
+player = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield"]
+position = Vector2(-3, -115)
+scale = Vector2(1.5, 0.13671874)
+texture = ExtResource("1_l8h54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2(-3.5, -114)
+shape = SubResource("RectangleShape2D_3uyv8")
