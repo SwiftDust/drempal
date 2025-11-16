@@ -2,12 +2,13 @@ class_name Shield extends StaticBody2D
 
 
 @export var SPEED = 5
-@export var player: Player
 
 @onready var sprite = $Sprite2D
 @onready var collision_shape = $CollisionShape2D
+@onready var player_node = $"../Player"
 
-var shield_visible = true;
+var shield_visible = true
+
 
 func handle_movement(delta) -> void:
 	var mouse_position = get_global_mouse_position()
@@ -25,7 +26,10 @@ func handle_movement(delta) -> void:
 	if rotation < deg_to_rad(-30):
 		rotation = deg_to_rad(-30)
 
+
 func _physics_process(delta: float) -> void:
+	position = player_node.position
+	
 	if Input.is_action_just_pressed("toggle_shield"):
 		shield_visible = false if shield_visible == true else true 
 	
