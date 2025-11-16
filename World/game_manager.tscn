@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bphpcpw5sh7ul"]
 
-[ext_resource type="PackedScene" uid="uid://rouyioqcdqm6" path="res://Entities/Player/player.tscn" id="1_k220b"]
-[ext_resource type="PackedScene" uid="uid://cbpxabi1vckev" path="res://World/Objects/Platform/platform.tscn" id="2_k220b"]
-[ext_resource type="Script" uid="uid://bci8gwgtcv6pl" path="res://World/player_camera.gd" id="2_sr7rc"]
+[ext_resource type="PackedScene" path="res://Entities/Player/player.tscn" id="1_k220b"]
+[ext_resource type="PackedScene" path="res://World/Objects/Platform/platform.tscn" id="2_k220b"]
+[ext_resource type="Script" path="res://World/player_camera.gd" id="2_sr7rc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_62w18"]
 distance = -102.0
