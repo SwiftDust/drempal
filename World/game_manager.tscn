@@ -1,15 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bphpcpw5sh7ul"]
+[gd_scene load_steps=9 format=3 uid="uid://bphpcpw5sh7ul"]
 
 [ext_resource type="PackedScene" uid="uid://ccnicinrqrxap" path="res://Entities/Shield/shield.tscn" id="1_07ocg"]
+[ext_resource type="Script" uid="uid://cmhbrmkryjbxv" path="res://World/game_manager.gd" id="1_c5go4"]
 [ext_resource type="PackedScene" uid="uid://rouyioqcdqm6" path="res://Entities/Player/player.tscn" id="1_k220b"]
 [ext_resource type="PackedScene" path="res://World/Objects/Platform/platform.tscn" id="2_k220b"]
-[ext_resource type="Script" path="res://World/player_camera.gd" id="2_sr7rc"]
+[ext_resource type="Script" uid="uid://bci8gwgtcv6pl" path="res://World/player_camera.gd" id="2_sr7rc"]
 [ext_resource type="PackedScene" uid="uid://bi1epc7t4dx2n" path="res://Entities/Asteroid/asteroid.tscn" id="4_nhtva"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_62w18"]
 distance = -102.0
 
-[node name="Game Manager" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_nhtva"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1148, -4)
+}
+point_count = 2
+
+[node name="Game Manager" type="Node"]
+script = ExtResource("1_c5go4")
+asteroid_scene = ExtResource("4_nhtva")
 
 [node name="Shield" parent="." instance=ExtResource("1_07ocg")]
 position = Vector2(56, 632)
@@ -41,27 +50,13 @@ position = Vector2(1222, 387)
 [node name="Platform3" parent="Platforms" instance=ExtResource("2_k220b")]
 position = Vector2(679, 227)
 
-[node name="Asteroids" type="Node" parent="."]
+[node name="AsteroidPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nhtva")
 
-[node name="Asteroid" parent="Asteroids" instance=ExtResource("4_nhtva")]
-collision_layer = 3
-mass = 14.824
-gravity_scale = 0.534
+[node name="AsteroidSpawnLocation" type="PathFollow2D" parent="AsteroidPath"]
+rotation = -0.0034843064
 
-[node name="Asteroid3" parent="Asteroids" instance=ExtResource("4_nhtva")]
-position = Vector2(293, 16)
-collision_layer = 3
-mass = 14.824
-gravity_scale = 0.534
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 0.85
 
-[node name="Asteroid4" parent="Asteroids" instance=ExtResource("4_nhtva")]
-position = Vector2(213, -4)
-collision_layer = 3
-mass = 14.824
-gravity_scale = 0.534
-
-[node name="Asteroid2" parent="Asteroids" instance=ExtResource("4_nhtva")]
-position = Vector2(121, 6)
-collision_layer = 3
-mass = 14.824
-gravity_scale = 0.534
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]

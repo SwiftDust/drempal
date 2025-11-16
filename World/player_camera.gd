@@ -1,4 +1,4 @@
-extends Camera2D
+class_name PlayerCamera extends Camera2D
 
 
 @onready var world_boundary = $"../../WorldBoundaries/CollisionShape2D"
