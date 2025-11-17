@@ -4,10 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://cwnwhlte1saol" path="res://icon.svg" id="2_kxyds"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krvk4"]
-radius = 33.37664
+radius = 43.289722
 
 [node name="Asteroid" type="RigidBody2D"]
+mass = 0.01
+gravity_scale = 0.2
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_yuh86")
+velocity = Vector2(1.33, 0.49)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.54, 0.54)
@@ -17,4 +22,8 @@ flip_v = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_krvk4")
 
+[node name="FreeingTimer" type="Timer" parent="."]
+wait_time = 0.3
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="FreeingTimer" to="." method="_on_freeing_timer_timeout"]

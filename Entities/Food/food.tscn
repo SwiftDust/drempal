@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsio4ud22br18"]
+
+[ext_resource type="Texture2D" uid="uid://cwnwhlte1saol" path="res://icon.svg" id="1_c6lgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6oel"]
+size = Vector2(32, 32)
+
+[node name="Food" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_c6lgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n6oel")
