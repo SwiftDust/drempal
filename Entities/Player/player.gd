@@ -1,12 +1,15 @@
 class_name Player extends CharacterBody2D
 
 
+@onready var heads_up_display = $"../HUD"
+
+
 @export var FRICTION = 2000.0
 @export var SPEED = 1500.0
 @export var STEP_DISTANCE = 250.0
 @export var JUMP_VELOCITY = -600.0
 @export var MAX_JUMPS = 2
-# Coyote time is the time the user has to react if they fall off the platform
+# coyote time is the time the user has to react if they fall off the platform
 @export var COYOTE_TIME_WINDOW = 0.2
 
 signal player_died
@@ -19,9 +22,11 @@ var time_in_air := 0.0
 var direction_sign := 0
 var target_distance := 0.0
 var lives := 3
+var score := 0.0
+var score_multiplier := 0.0
 
 
-func set_state(new_state: int) -> void:
+func set_state(new_state: States) -> void:
 	state = new_state
 	
 	if state == States.MOVING:
@@ -30,8 +35,17 @@ func set_state(new_state: int) -> void:
 	## TODO: add animations for the state
 
 
+func increment_score_multiplier():
+	var tween = create_tween()
+	# smooth sine wave transition with a slight scale up
+	tween.tween_property(self, "scale", scale * 1.1, 0.15)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+	score_multiplier += 1.5
+
 func take_live():
 	lives -= 1
+	heads_up_display.remove_live()
 	if lives == 0:
 		die()
 
@@ -78,3 +92,5 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 	
 	move_and_slide()
+	score += get_process_delta_time() * score_multiplier
+	heads_up_display.update_score(int(score), score_multiplier)

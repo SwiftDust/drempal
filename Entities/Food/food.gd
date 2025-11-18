@@ -23,5 +23,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_animation_timer_timeout() -> void:
-	## TODO: actually eat the food
+	player.increment_score_multiplier()
 	queue_free()

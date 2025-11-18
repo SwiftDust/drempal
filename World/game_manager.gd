@@ -2,10 +2,14 @@ class_name GameManager extends Node
 
 
 @export var asteroid_scene: PackedScene
+@export var shield_scene: PackedScene
 @onready var asteroid_timer = $AsteroidTimer
 
 
 func _ready() -> void:
+	var shield = shield_scene.instantiate()
+	add_child(shield)
+	
 	asteroid_timer.start()
 
 func _on_asteroid_timer_timeout() -> void:
