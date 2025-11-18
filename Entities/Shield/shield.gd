@@ -8,6 +8,7 @@ class_name Shield extends StaticBody2D
 @onready var player_node = $"../Player"
 
 var shield_visible = true
+var damage_taken := 0
 
 
 func handle_movement(delta) -> void:
@@ -25,6 +26,20 @@ func handle_movement(delta) -> void:
 		rotation = deg_to_rad(30)
 	if rotation < deg_to_rad(-30):
 		rotation = deg_to_rad(-30)
+		
+func take_damage():
+	## TODO: show the cracks in the shield, for now I'm just going to let it shrink by .99
+	# the max damage it can take is 10, after that it'll disappear completely 
+	scale *= 0.99
+	damage_taken += 1
+	print(damage_taken)
+	
+	if damage_taken > 10:
+		queue_free()
+
+
+func _ready() -> void:
+	player_node.player_died.connect(_on_player_died)
 
 
 func _physics_process(delta: float) -> void:
@@ -40,3 +55,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.hide()
 		collision_shape.set_deferred("disabled", true)
+
+func _on_player_died():
+	queue_free()

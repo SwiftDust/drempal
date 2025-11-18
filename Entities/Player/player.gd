@@ -9,6 +9,8 @@ class_name Player extends CharacterBody2D
 # Coyote time is the time the user has to react if they fall off the platform
 @export var COYOTE_TIME_WINDOW = 0.2
 
+signal player_died
+
 enum States {IDLE, MOVING, JUMPING, FALLING}
 var state: States = States.IDLE: set = set_state
 
@@ -16,6 +18,7 @@ var jump_count := 0
 var time_in_air := 0.0
 var direction_sign := 0
 var target_distance := 0.0
+var lives := 3
 
 
 func set_state(new_state: int) -> void:
@@ -25,6 +28,18 @@ func set_state(new_state: int) -> void:
 		target_distance = STEP_DISTANCE
 	
 	## TODO: add animations for the state
+
+
+func take_live():
+	lives -= 1
+	if lives == 0:
+		die()
+
+
+func die():
+	## TODO: add animations for die, and reset to title screen
+	player_died.emit()
+	queue_free() # just a placeholder so we at least have something visual
 
 
 func _physics_process(delta: float) -> void:
