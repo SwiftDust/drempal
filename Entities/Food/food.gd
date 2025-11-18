@@ -1,10 +1,27 @@
 class_name Food extends Area2D
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@onready var player = $"../Player"
+@onready var timer = $AnimationTimer
+@export var SPEED = 10
+
+var follow_player := false
+var timer_started := false
+
+
 func _process(delta: float) -> void:
-	pass
+	if follow_player:
+		if timer_started == false:
+			timer.start()
+			timer_started = true
+		position = lerp(position, player.position, SPEED * delta)
 
 
-func _on_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		follow_player = true
+
+
+func _on_animation_timer_timeout() -> void:
+	## TODO: actually eat the food
+	queue_free()

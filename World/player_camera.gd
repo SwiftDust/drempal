@@ -3,11 +3,12 @@ class_name PlayerCamera extends Camera2D
 
 @onready var world_boundary = $"../../WorldBoundaries/CollisionShape2D"
 
-var boundary_position_y = null
+var boundary_position_y := 0.0
 
 
 func _ready() -> void:
 	boundary_position_y = world_boundary.global_position.y
+
 
 # TODO: use tilemap boundaries to make a better version of this
 func _process(delta: float) -> void:
