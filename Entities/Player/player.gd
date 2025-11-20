@@ -23,7 +23,7 @@ var direction_sign := 0
 var target_distance := 0.0
 var lives := 3
 var score := 0.0
-var score_multiplier := 0.0
+var score_multiplier := 1.0
 
 
 func set_state(new_state: States) -> void:

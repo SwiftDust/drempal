@@ -19,11 +19,14 @@ func _ready() -> void:
 
 func _on_asteroid_timer_timeout() -> void:
 	var asteroid = asteroid_scene.instantiate()
+	var camera_size: Variant
+	var camera_rect: Rect2
 	
-	var camera_size = get_viewport_rect().size * camera_2d.zoom
-	var camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
+	if camera_2d:
+		camera_size = get_viewport_rect().size * camera_2d.zoom
+		camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
 	var asteroid_spawn_location = {
-		"x": randi_range(0, camera_rect.end.x),
+		"x": randf_range(0.0, camera_rect.end.x),
 		"y": camera_rect.position.y
 	}
 	
