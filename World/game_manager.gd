@@ -1,9 +1,13 @@
-class_name GameManager extends Node
+class_name GameManager extends Node2D
+
+
+signal game_started
 
 
 @export var asteroid_scene: PackedScene
 @export var shield_scene: PackedScene
 @onready var asteroid_timer = $AsteroidTimer
+@onready var camera_2d = $"Player/Camera2D"
 
 
 func _ready() -> void:
@@ -11,14 +15,19 @@ func _ready() -> void:
 	add_child(shield)
 	
 	asteroid_timer.start()
+	game_started.emit()
 
 func _on_asteroid_timer_timeout() -> void:
 	var asteroid = asteroid_scene.instantiate()
 	
-	var asteroid_spawn_location = $AsteroidPath/AsteroidSpawnLocation
-	asteroid_spawn_location.progress_ratio = randf()
+	var camera_size = get_viewport_rect().size * camera_2d.zoom
+	var camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
+	var asteroid_spawn_location = {
+		"x": randi_range(0, camera_rect.end.x),
+		"y": camera_rect.position.y
+	}
 	
-	asteroid.position = asteroid_spawn_location.position
+	asteroid.position = Vector2(asteroid_spawn_location.x, asteroid_spawn_location.y)
 	
 	# quick note to myself in case I forget: 
 	# this means a full 360 degrees circle as 2*pi is 360 degrees

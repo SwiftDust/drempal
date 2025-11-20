@@ -1,36 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://bphpcpw5sh7ul"]
+[gd_scene load_steps=10 format=3 uid="uid://bphpcpw5sh7ul"]
 
 [ext_resource type="PackedScene" uid="uid://ccnicinrqrxap" path="res://Entities/Shield/shield.tscn" id="1_07ocg"]
 [ext_resource type="Script" uid="uid://cmhbrmkryjbxv" path="res://World/game_manager.gd" id="1_c5go4"]
 [ext_resource type="PackedScene" uid="uid://rouyioqcdqm6" path="res://Entities/Player/player.tscn" id="1_k220b"]
-[ext_resource type="PackedScene" uid="uid://cbpxabi1vckev" path="res://World/Objects/Platform/platform.tscn" id="2_k220b"]
 [ext_resource type="Script" uid="uid://bci8gwgtcv6pl" path="res://World/player_camera.gd" id="2_sr7rc"]
 [ext_resource type="PackedScene" uid="uid://bi1epc7t4dx2n" path="res://Entities/Asteroid/asteroid.tscn" id="4_nhtva"]
 [ext_resource type="PackedScene" uid="uid://rxh8ogeepttc" path="res://Cosmetics/HUD/hud.tscn" id="4_thsql"]
 [ext_resource type="PackedScene" uid="uid://dsio4ud22br18" path="res://Entities/Food/food.tscn" id="7_vo8me"]
+[ext_resource type="PackedScene" uid="uid://mak0g3nvku5o" path="res://World/platform_spawner.tscn" id="8_thsql"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_62w18"]
 distance = -102.0
 
-[sub_resource type="Curve2D" id="Curve2D_nhtva"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1148, -4)
-}
-point_count = 2
-
-[node name="Game Manager" type="Node"]
+[node name="Game Manager" type="Node2D"]
 script = ExtResource("1_c5go4")
 asteroid_scene = ExtResource("4_nhtva")
 shield_scene = ExtResource("1_07ocg")
 
 [node name="HUD" parent="." instance=ExtResource("4_thsql")]
-
-[node name="Player" parent="." instance=ExtResource("1_k220b")]
-position = Vector2(200, 400)
-scale = Vector2(0.75, 0.75)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-script = ExtResource("2_sr7rc")
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
@@ -40,28 +27,21 @@ shape = SubResource("WorldBoundaryShape2D_62w18")
 
 [node name="Platforms" type="Node" parent="."]
 
-[node name="Platform" parent="Platforms" instance=ExtResource("2_k220b")]
-position = Vector2(294, 391)
-
-[node name="Platform2" parent="Platforms" instance=ExtResource("2_k220b")]
-position = Vector2(1376, 142)
-
-[node name="Platform4" parent="Platforms" instance=ExtResource("2_k220b")]
-position = Vector2(1222, 387)
-
-[node name="Platform3" parent="Platforms" instance=ExtResource("2_k220b")]
-position = Vector2(679, 227)
-
-[node name="AsteroidPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_nhtva")
-
-[node name="AsteroidSpawnLocation" type="PathFollow2D" parent="AsteroidPath"]
-rotation = -0.0034843064
-
 [node name="AsteroidTimer" type="Timer" parent="."]
 wait_time = 0.85
 
 [node name="Food" parent="." instance=ExtResource("7_vo8me")]
 position = Vector2(345, 628)
 
+[node name="Player" parent="." instance=ExtResource("1_k220b")]
+position = Vector2(200, 600)
+scale = Vector2(0.75, 0.75)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+script = ExtResource("2_sr7rc")
+
+[node name="Platform Spawner" parent="." instance=ExtResource("8_thsql")]
+
+[connection signal="game_started" from="." to="Platform Spawner" method="_on_game_manager_game_started"]
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]

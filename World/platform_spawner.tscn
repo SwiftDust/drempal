@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://mak0g3nvku5o"]
+
+[ext_resource type="Script" uid="uid://bisx3ofpnf8kw" path="res://World/platform_spawner.gd" id="1_1tgqc"]
+[ext_resource type="PackedScene" uid="uid://cbpxabi1vckev" path="res://World/Objects/Platform/platform.tscn" id="2_geaur"]
+
+[node name="Platform Spawner" type="Node2D"]
+script = ExtResource("1_1tgqc")
+platform_scene = ExtResource("2_geaur")
