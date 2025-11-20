@@ -1,7 +1,7 @@
 class_name Food extends Area2D
 
 
-@onready var player = $"../Player"
+@onready var player = $"../../Player"
 @onready var timer = $AnimationTimer
 @export var SPEED = 10
 

@@ -61,4 +61,4 @@ func spawn_platforms(amount: int) -> void:
 
 
 func _on_game_manager_game_started() -> void:
-	spawn_platforms(5)
+	spawn_platforms(100)

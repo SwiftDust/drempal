@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bphpcpw5sh7ul"]
+[gd_scene load_steps=8 format=3 uid="uid://bphpcpw5sh7ul"]
 
 [ext_resource type="PackedScene" uid="uid://ccnicinrqrxap" path="res://Entities/Shield/shield.tscn" id="1_07ocg"]
 [ext_resource type="Script" uid="uid://cmhbrmkryjbxv" path="res://World/game_manager.gd" id="1_c5go4"]
 [ext_resource type="PackedScene" uid="uid://rouyioqcdqm6" path="res://Entities/Player/player.tscn" id="1_k220b"]
-[ext_resource type="Script" uid="uid://bci8gwgtcv6pl" path="res://World/player_camera.gd" id="2_sr7rc"]
 [ext_resource type="PackedScene" uid="uid://bi1epc7t4dx2n" path="res://Entities/Asteroid/asteroid.tscn" id="4_nhtva"]
 [ext_resource type="PackedScene" uid="uid://rxh8ogeepttc" path="res://Cosmetics/HUD/hud.tscn" id="4_thsql"]
 [ext_resource type="PackedScene" uid="uid://mak0g3nvku5o" path="res://World/platform_spawner.tscn" id="8_thsql"]
@@ -35,7 +34,6 @@ scale = Vector2(0.75, 0.75)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
-script = ExtResource("2_sr7rc")
 
 [node name="Platform Spawner" parent="." instance=ExtResource("8_thsql")]
 
