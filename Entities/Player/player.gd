@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 
 @onready var heads_up_display = $"../HUD"
+@onready var shield = $"../Shield"
 
 
 @export var FRICTION = 2000.0
@@ -13,6 +14,7 @@ class_name Player extends CharacterBody2D
 @export var COYOTE_TIME_WINDOW = 0.2
 
 signal player_died
+signal player_ate_food
 
 enum States {IDLE, MOVING, JUMPING, FALLING}
 var state: States = States.IDLE: set = set_state
@@ -41,6 +43,7 @@ func increment_score_multiplier():
 	tween.tween_property(self, "scale", scale * 1.1, 0.15)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_OUT)
+	player_ate_food.emit()
 	score_multiplier += 1.5
 
 func take_live():

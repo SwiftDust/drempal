@@ -9,9 +9,11 @@ signal game_started
 @onready var asteroid_timer = $AsteroidTimer
 @onready var camera_2d = $"Player/Camera2D"
 
+var shield: Node
+
 
 func _ready() -> void:
-	var shield = shield_scene.instantiate()
+	shield = shield_scene.instantiate()
 	add_child(shield)
 	
 	asteroid_timer.start()
@@ -41,3 +43,11 @@ func _on_asteroid_timer_timeout() -> void:
 	asteroid.velocity = direction * random_speed 
 	
 	add_child(asteroid)
+
+
+func _on_player_player_ate_food() -> void:
+	var tween = create_tween()
+	if shield:
+		tween.tween_property(shield, "scale", scale * 1.1, 0.15)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_OUT)

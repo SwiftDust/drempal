@@ -10,25 +10,35 @@ class_name PlatformSpawner extends Node2D
 @onready var player_collision_shape = player_collision_shape_node.shape
 
 var food_spawn_positions := ["left", "center", "right"]
+var platforms := []
+var height_addition: float = 5.0 
 
 
 func spawn_platforms(amount: int) -> void:
 	var camera_size = get_viewport_rect().size * camera_2d.zoom
 	var camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
-	var height_addition = 5
 	var food_spawn_chance = 0.5 
+	
+	# Find the highest (lowest Y value) existing platform
+	var highest_y = camera_rect.end.y
+	for p in platforms:
+		if is_instance_valid(p):
+			if p.global_position.y < highest_y:
+				highest_y = p.global_position.y
+	
 	for i in range(amount):
-		var height = player_collision_shape.size.y * player_collision_shape_node.global_scale.y * height_addition
+		var height_increment = player_collision_shape.size.y * player_collision_shape_node.global_scale.y * 3
 		var platform_position = {
 			"x": randf_range(0, camera_rect.end.x),
-			"y": camera_rect.end.y - height
+			"y": highest_y - height_increment
 		}
 		var platform = platform_scene.instantiate()
 		
 		platform.position = Vector2(platform_position.x, platform_position.y)
-		height_addition += 3
+		highest_y = platform_position.y  # Update for next platform
 		
 		add_child(platform)
+		platforms.append(platform)
 		
 		if randf() < food_spawn_chance:
 			var food = food_scene.instantiate()
@@ -59,6 +69,22 @@ func spawn_platforms(amount: int) -> void:
 			food.position = food_position
 			add_child(food)
 
+func cleanup_and_respawn() -> void:
+	var camera_size = get_viewport_rect().size * camera_2d.zoom
+	var camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
+
+	for p in platforms:
+		if is_instance_valid(p):
+			if p.global_position.y > camera_rect.end.y:
+				platforms.erase(p)
+				p.queue_free()
+				
+				spawn_platforms(1)
+
+
+func _process(delta: float) -> void:
+	cleanup_and_respawn()
+
 
 func _on_game_manager_game_started() -> void:
-	spawn_platforms(100)
+	spawn_platforms(5)

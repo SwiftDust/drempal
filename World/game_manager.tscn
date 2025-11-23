@@ -29,7 +29,7 @@ shape = SubResource("WorldBoundaryShape2D_62w18")
 wait_time = 0.85
 
 [node name="Player" parent="." instance=ExtResource("1_k220b")]
-position = Vector2(200, 600)
+position = Vector2(193.00002, 564)
 scale = Vector2(0.75, 0.75)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -39,3 +39,4 @@ position_smoothing_enabled = true
 
 [connection signal="game_started" from="." to="Platform Spawner" method="_on_game_manager_game_started"]
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
+[connection signal="player_ate_food" from="Player" to="." method="_on_player_player_ate_food"]
