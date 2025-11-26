@@ -15,6 +15,7 @@ class_name Player extends CharacterBody2D
 
 signal player_died
 signal player_ate_food
+signal next_wave_started
 
 enum States {IDLE, MOVING, JUMPING, FALLING}
 var state: States = States.IDLE: set = set_state
@@ -26,6 +27,8 @@ var target_distance := 0.0
 var lives := 3
 var score := 0.0
 var score_multiplier := 1.0
+var wave := 1
+var next_wave_at := 100
 
 
 func set_state(new_state: States) -> void:
@@ -93,7 +96,12 @@ func _physics_process(delta: float) -> void:
 		target_distance -= abs(velocity.x * delta)
 	if target_distance <= 0:
 		velocity.x = 0
+		
+	if score > next_wave_at:
+		wave += 1
+		next_wave_at *= 1.5
+		next_wave_started.emit()
 	
 	move_and_slide()
 	score += get_process_delta_time() * score_multiplier
-	heads_up_display.update_score(int(score), score_multiplier)
+	heads_up_display.update_score(int(score), score_multiplier, wave)

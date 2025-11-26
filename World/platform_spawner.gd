@@ -70,8 +70,12 @@ func spawn_platforms(amount: int) -> void:
 			add_child(food)
 
 func cleanup_and_respawn() -> void:
-	var camera_size = get_viewport_rect().size * camera_2d.zoom
-	var camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
+	var camera_size: Vector2 = Vector2()
+	var camera_rect: Rect2 = Rect2()
+	
+	if is_instance_valid(camera_2d):
+		camera_size = get_viewport_rect().size * camera_2d.zoom
+		camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
 
 	for p in platforms:
 		if is_instance_valid(p):

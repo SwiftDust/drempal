@@ -9,7 +9,9 @@ class_name Shield extends StaticBody2D
 
 var shield_visible = true
 var damage_taken := 0
-
+var max_damage := 10
+var original_scale := self.scale
+ 
 
 func handle_movement(delta) -> void:
 	var mouse_position = get_global_mouse_position()
@@ -34,12 +36,14 @@ func take_damage():
 	damage_taken += 1
 	print(damage_taken)
 	
-	if damage_taken > 10:
-		queue_free()
+	if damage_taken > max_damage:
+		collision_shape.set_deferred("disabled", true)
+		sprite.hide()
 
 
 func _ready() -> void:
 	player_node.player_died.connect(_on_player_died)
+	player_node.next_wave_started.connect(_on_player_next_wave_started)
 
 
 func _physics_process(delta: float) -> void:
@@ -58,3 +62,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_player_died():
 	queue_free()
+	
+func _on_player_next_wave_started():
+	collision_shape.set_deferred("disabled", false)
+	sprite.show()
+	scale = original_scale
+	damage_taken = 0
+	max_damage *= 1.5

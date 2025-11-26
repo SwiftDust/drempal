@@ -51,3 +51,7 @@ func _on_player_player_ate_food() -> void:
 		tween.tween_property(shield, "scale", scale * 1.1, 0.15)\
 			.set_trans(Tween.TRANS_SINE)\
 			.set_ease(Tween.EASE_OUT)
+
+
+func _on_player_next_wave_started() -> void:
+	asteroid_timer.wait_time *= 0.9
