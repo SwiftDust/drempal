@@ -47,7 +47,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	position = player_node.position
+	if is_instance_valid(player_node):
+		position = player_node.position
 	
 	if Input.is_action_just_pressed("toggle_shield"):
 		shield_visible = false if shield_visible == true else true 

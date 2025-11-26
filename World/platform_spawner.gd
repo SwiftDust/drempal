@@ -15,8 +15,12 @@ var height_addition: float = 5.0
 
 
 func spawn_platforms(amount: int) -> void:
-	var camera_size = get_viewport_rect().size * camera_2d.zoom
-	var camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
+	var camera_size: Vector2 = Vector2()
+	var camera_rect: Rect2 = Rect2()
+	
+	if is_instance_valid(camera_2d):
+		camera_size = get_viewport_rect().size * camera_2d.zoom
+		camera_rect = Rect2(camera_2d.get_screen_center_position() - camera_size / 2, camera_size)
 	var food_spawn_chance = 0.5 
 	
 	# Find the highest (lowest Y value) existing platform
@@ -27,28 +31,38 @@ func spawn_platforms(amount: int) -> void:
 				highest_y = p.global_position.y
 	
 	for i in range(amount):
-		var height_increment = player_collision_shape.size.y * player_collision_shape_node.global_scale.y * 3
-		var platform_position = {
-			"x": randf_range(0, camera_rect.end.x),
-			"y": highest_y - height_increment
-		}
-		var platform = platform_scene.instantiate()
+		var platform: Node
+		var platform_position = {"x": 0, "y": 0}
 		
-		platform.position = Vector2(platform_position.x, platform_position.y)
-		highest_y = platform_position.y  # Update for next platform
-		
-		add_child(platform)
-		platforms.append(platform)
+		if is_instance_valid(player_collision_shape) and is_instance_valid(player_collision_shape_node):
+			var height_increment = player_collision_shape.size.y * player_collision_shape_node.global_scale.y * 3
+			platform_position = {
+				"x": randf_range(0, camera_rect.end.x),
+				"y": highest_y - height_increment
+			}
+			platform = platform_scene.instantiate()
+			
+			platform.position = Vector2(platform_position.x, platform_position.y)
+			highest_y = platform_position.y  # Update for next platform
+			
+			add_child(platform)
+			platforms.append(platform)
 		
 		if randf() < food_spawn_chance:
 			var food = food_scene.instantiate()
 			var food_location = food_spawn_positions.pick_random()
-			var platform_collision_shape = platform.get_node("CollisionShape2D").shape
-			var platform_width = platform_collision_shape.extents.x * 2
-			var platform_height = platform_collision_shape.extents.y * 2
+			
+			var platform_collision_shape: RectangleShape2D; var platform_width: float
+			var platform_height: float; var food_height_above_platform: float
+			if is_instance_valid(platform):
+				platform_collision_shape = platform.get_node("CollisionShape2D").shape
+				platform_width = platform_collision_shape.extents.x * 2
+				platform_height = platform_collision_shape.extents.y * 2
+				food_height_above_platform = platform_height / 2 + 30
+			
 			var food_position = Vector2()
 			var offset: int = 50
-			var food_height_above_platform = platform_height / 2 + 30
+			
 			
 			match food_location:
 				"left":
