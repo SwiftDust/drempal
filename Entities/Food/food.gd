@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 		if timer_started == false:
 			timer.start()
 			timer_started = true
-		position = lerp(position, player.position, SPEED * delta)
+		if is_instance_valid(position):
+			position = lerp(position, player.position, SPEED * delta)
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -1,7 +1,7 @@
 class_name Drab extends Area2D
 
 
-@export var INITIAL_MOVING_SPEED: int = 200
+@export var INITIAL_MOVING_SPEED: int = 190
 @onready var player_node = $"../Player"
 
 
@@ -21,4 +21,4 @@ func _on_player_next_wave_started() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.queue_free()
+		body.die()

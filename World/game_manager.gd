@@ -8,6 +8,7 @@ signal game_started
 @export var shield_scene: PackedScene
 @onready var asteroid_timer = $AsteroidTimer
 @onready var camera_2d = $"Player/Camera2D"
+@onready var next_wave = $"Next Wave"
 
 var shield: Node
 
@@ -55,3 +56,4 @@ func _on_player_player_ate_food() -> void:
 
 func _on_player_next_wave_started() -> void:
 	asteroid_timer.wait_time *= 0.9
+	next_wave.visible = true

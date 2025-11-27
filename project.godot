@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Drempal"
-run/main_scene="uid://bphpcpw5sh7ul"
+run/main_scene="uid://c6tue2g5rkrkg"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cm2fh35gxk7cq"
+
+[autoload]
+
+SignalLens="*res://addons/signal_lens/autoload/signal_lens_autoload.gd"
+TransitionScreen="res://UI/transition_screen.gd"
 
 [display]
 
@@ -26,7 +31,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/signal_lens/plugin.cfg")
 
 [input]
 

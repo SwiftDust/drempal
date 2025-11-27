@@ -2,8 +2,6 @@ class_name Player extends CharacterBody2D
 
 
 @onready var heads_up_display = $"../HUD"
-@onready var shield = $"../Shield"
-
 
 @export var FRICTION = 2000.0
 @export var SPEED = 1500.0
@@ -12,6 +10,7 @@ class_name Player extends CharacterBody2D
 @export var MAX_JUMPS = 2
 # coyote time is the time the user has to react if they fall off the platform
 @export var COYOTE_TIME_WINDOW = 0.2
+@export var title_screen: PackedScene
 
 signal player_died
 signal player_ate_food
@@ -57,9 +56,11 @@ func take_live():
 
 
 func die():
-	## TODO: add animations for die, and reset to title screen
+	## TODO: add animations for die
 	player_died.emit()
+	get_tree().change_scene_to_packed(title_screen)
 	queue_free() # just a placeholder so we at least have something visual
+
 
 
 func _physics_process(delta: float) -> void:

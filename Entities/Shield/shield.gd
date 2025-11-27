@@ -31,14 +31,12 @@ func handle_movement(delta) -> void:
 		
 func take_damage():
 	## TODO: show the cracks in the shield, for now I'm just going to let it shrink by .99
-	# the max damage it can take is 10, after that it'll disappear completely 
 	scale *= 0.99
 	damage_taken += 1
 	print(damage_taken)
 	
 	if damage_taken > max_damage:
-		collision_shape.set_deferred("disabled", true)
-		sprite.hide()
+		shield_visible = false
 
 
 func _ready() -> void:
@@ -62,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		collision_shape.set_deferred("disabled", true)
 
 func _on_player_died():
-	queue_free()
+	shield_visible = false
 	
 func _on_player_next_wave_started():
 	collision_shape.set_deferred("disabled", false)
