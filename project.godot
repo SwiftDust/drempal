@@ -13,7 +13,7 @@ config_version=5
 config/name="Drempal"
 run/main_scene="uid://c6tue2g5rkrkg"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="uid://cm2fh35gxk7cq"
+config/icon="uid://cwnwhlte1saol"
 
 [autoload]
 
@@ -59,3 +59,7 @@ toggle_shield={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

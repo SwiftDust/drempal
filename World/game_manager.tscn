@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bphpcpw5sh7ul"]
+[gd_scene load_steps=10 format=3 uid="uid://bphpcpw5sh7ul"]
 
 [ext_resource type="PackedScene" uid="uid://ccnicinrqrxap" path="res://Entities/Shield/shield.tscn" id="1_07ocg"]
 [ext_resource type="Script" uid="uid://cmhbrmkryjbxv" path="res://World/game_manager.gd" id="1_c5go4"]
 [ext_resource type="PackedScene" uid="uid://rouyioqcdqm6" path="res://Entities/Player/player.tscn" id="1_k220b"]
 [ext_resource type="PackedScene" uid="uid://bi1epc7t4dx2n" path="res://Entities/Asteroid/asteroid.tscn" id="4_nhtva"]
 [ext_resource type="PackedScene" uid="uid://rxh8ogeepttc" path="res://Cosmetics/HUD/hud.tscn" id="4_thsql"]
-[ext_resource type="PackedScene" uid="uid://c6tue2g5rkrkg" path="res://UI/main_menu.tscn" id="6_0pw6i"]
 [ext_resource type="PackedScene" uid="uid://efyvciy4y5r" path="res://Entities/Drab/drab.tscn" id="7_thsql"]
 [ext_resource type="PackedScene" uid="uid://cw0u53iyvqqci" path="res://UI/next_wave.tscn" id="8_0pw6i"]
 [ext_resource type="PackedScene" uid="uid://mak0g3nvku5o" path="res://World/platform_spawner.tscn" id="8_thsql"]
@@ -34,7 +33,6 @@ wait_time = 0.85
 [node name="Player" parent="." instance=ExtResource("1_k220b")]
 position = Vector2(193.00002, 564)
 scale = Vector2(0.75, 0.75)
-title_screen = ExtResource("6_0pw6i")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true

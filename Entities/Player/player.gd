@@ -10,7 +10,7 @@ class_name Player extends CharacterBody2D
 @export var MAX_JUMPS = 2
 # coyote time is the time the user has to react if they fall off the platform
 @export var COYOTE_TIME_WINDOW = 0.2
-@export var title_screen: PackedScene
+
 
 signal player_died
 signal player_ate_food
@@ -58,12 +58,13 @@ func take_live():
 func die():
 	## TODO: add animations for die
 	player_died.emit()
-	get_tree().change_scene_to_packed(title_screen)
+	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
 	queue_free() # just a placeholder so we at least have something visual
 
 
 
 func _physics_process(delta: float) -> void:
+	print("adfe")
 	var is_initiating_jump := Input.is_action_just_pressed("jump") and (jump_count == MAX_JUMPS - 1 or (is_on_floor() or time_in_air < COYOTE_TIME_WINDOW))
 	var is_initiating_burst = Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right")
 	
