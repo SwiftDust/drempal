@@ -35,7 +35,7 @@ func spawn_platforms(amount: int) -> void:
 		var platform_position = {"x": 0, "y": 0}
 		
 		if is_instance_valid(player_collision_shape) and is_instance_valid(player_collision_shape_node):
-			var height_increment = player_collision_shape.size.y * player_collision_shape_node.global_scale.y * 3
+			var height_increment = player_collision_shape.size.y * player_collision_shape_node.global_scale.y * 3.5
 			platform_position = {
 				"x": randf_range(0, camera_rect.end.x),
 				"y": highest_y - height_increment

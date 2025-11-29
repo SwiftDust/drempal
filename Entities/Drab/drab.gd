@@ -1,7 +1,7 @@
 class_name Drab extends Area2D
 
 
-@export var INITIAL_MOVING_SPEED: int = 190
+@export var INITIAL_MOVING_SPEED: int = 175
 @onready var player_node = $"../Player"
 
 

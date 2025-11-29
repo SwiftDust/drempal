@@ -24,10 +24,15 @@ var time_in_air := 0.0
 var direction_sign := 0
 var target_distance := 0.0
 var lives := 3
-var score := 0.0
+var score := 20.0
 var score_multiplier := 1.0
 var wave := 1
-var next_wave_at := 100
+var next_wave_at := 25
+var original_scale := Vector2()
+
+
+func _ready() -> void:
+	original_scale = scale
 
 
 func set_state(new_state: States) -> void:
@@ -58,7 +63,7 @@ func take_live():
 func die():
 	## TODO: add animations for die
 	player_died.emit()
-	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://UI/main_menu.tscn")
 	queue_free() # just a placeholder so we at least have something visual
 
 
@@ -102,6 +107,7 @@ func _physics_process(delta: float) -> void:
 	if score > next_wave_at:
 		wave += 1
 		next_wave_at *= 1.5
+		scale = original_scale
 		next_wave_started.emit()
 	
 	move_and_slide()
