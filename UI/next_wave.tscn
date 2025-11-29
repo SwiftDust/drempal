@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cw0u53iyvqqci"]
+[gd_scene load_steps=2 format=3 uid="uid://cw0u53iyvqqci"]
+
+[ext_resource type="Script" uid="uid://chx1c7po7om7n" path="res://UI/next_wave.gd" id="1_1o13t"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_1o13t")
 
 [node name="Next Wave" type="Panel" parent="."]
 anchors_preset = 8

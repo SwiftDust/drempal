@@ -10,6 +10,7 @@ signal game_started
 @onready var camera_2d = $"Player/Camera2D"
 @onready var next_wave = $"Next Wave"
 
+
 var shield: Node
 
 
@@ -54,6 +55,7 @@ func _on_player_player_ate_food() -> void:
 			.set_ease(Tween.EASE_OUT)
 
 
-func _on_player_next_wave_started() -> void:
+func _on_player_next_wave_started(wave) -> void:
 	asteroid_timer.wait_time *= 0.9
 	next_wave.visible = true
+	next_wave.update(wave, asteroid_timer.wait_time, shield.max_damage)

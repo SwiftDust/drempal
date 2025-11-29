@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 
 @onready var heads_up_display = $"../HUD"
 
+
 @export var FRICTION = 2000.0
 @export var SPEED = 1500.0
 @export var STEP_DISTANCE = 250.0
@@ -69,7 +70,6 @@ func die():
 
 
 func _physics_process(delta: float) -> void:
-	print("adfe")
 	var is_initiating_jump := Input.is_action_just_pressed("jump") and (jump_count == MAX_JUMPS - 1 or (is_on_floor() or time_in_air < COYOTE_TIME_WINDOW))
 	var is_initiating_burst = Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right")
 	
@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 		wave += 1
 		next_wave_at *= 1.5
 		scale = original_scale
-		next_wave_started.emit()
+		next_wave_started.emit(wave)
 	
 	move_and_slide()
 	score += get_process_delta_time() * score_multiplier
