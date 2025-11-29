@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 func _on_player_died():
 	shield_visible = false
 	
-func _on_player_next_wave_started():
+func _on_player_next_wave_started(wave):
 	collision_shape.set_deferred("disabled", false)
 	sprite.show()
 	scale = original_scale

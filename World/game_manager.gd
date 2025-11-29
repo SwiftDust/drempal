@@ -58,4 +58,6 @@ func _on_player_player_ate_food() -> void:
 func _on_player_next_wave_started(wave) -> void:
 	asteroid_timer.wait_time *= 0.9
 	next_wave.visible = true
+	print(asteroid_timer.wait_time)
 	next_wave.update(wave, asteroid_timer.wait_time, shield.max_damage)
+	get_tree().paused = true
