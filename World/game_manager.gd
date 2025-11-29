@@ -9,14 +9,17 @@ signal game_started
 @onready var asteroid_timer = $AsteroidTimer
 @onready var camera_2d = $"Player/Camera2D"
 @onready var next_wave = $"Next Wave"
+@onready var player = $"Player"
 
 
 var shield: Node
+var _wave: int
 
 
 func _ready() -> void:
 	shield = shield_scene.instantiate()
 	add_child(shield)
+	shield.max_damage_updated.connect(_on_max_damage_updated)
 	
 	asteroid_timer.start()
 	game_started.emit()
@@ -57,7 +60,13 @@ func _on_player_player_ate_food() -> void:
 
 func _on_player_next_wave_started(wave) -> void:
 	asteroid_timer.wait_time *= 0.9
+	_wave = wave
+
+
+func _on_max_damage_updated(max_damage) -> void:
+	while not player.is_on_floor():
+		await get_tree().process_frame
+	
 	next_wave.visible = true
-	print(asteroid_timer.wait_time)
-	next_wave.update(wave, asteroid_timer.wait_time, shield.max_damage)
+	next_wave.update(_wave, asteroid_timer.wait_time, shield.max_damage)
 	get_tree().paused = true

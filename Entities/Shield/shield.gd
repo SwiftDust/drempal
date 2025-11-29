@@ -11,6 +11,8 @@ var shield_visible = true
 var damage_taken := 0
 var max_damage := 10
 var original_scale := self.scale
+
+signal max_damage_updated
  
 
 func handle_movement(delta) -> void:
@@ -68,3 +70,4 @@ func _on_player_next_wave_started(wave):
 	scale = original_scale
 	damage_taken = 0
 	max_damage *= 1.5
+	max_damage_updated.emit(max_damage)

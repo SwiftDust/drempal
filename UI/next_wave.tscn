@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://chx1c7po7om7n" path="res://UI/next_wave.gd" id="1_1o13t"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Next Wave" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_1o13t")
 
-[node name="Next Wave" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -18,7 +19,7 @@ offset_bottom = 112.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Next Wave"]
+[node name="Button" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -33,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Continue"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Next Wave"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -47,18 +48,20 @@ offset_bottom = -1.2501526
 grow_horizontal = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Next Wave/VBoxContainer"]
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "You got to the next wave!"
 
-[node name="Wave" type="Label" parent="Next Wave/VBoxContainer"]
+[node name="Wave" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Wave: 1"
 
-[node name="Asteroid Spawn Speed" type="Label" parent="Next Wave/VBoxContainer"]
+[node name="Asteroid Spawn Speed" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Asteroid Spawn Speed: 1"
 
-[node name="New Shield HP" type="Label" parent="Next Wave/VBoxContainer"]
+[node name="New Shield HP" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "New Shield HP: 10"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

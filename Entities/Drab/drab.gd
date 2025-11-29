@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	position.y -= delta * INITIAL_MOVING_SPEED
 
 
-func _on_player_next_wave_started() -> void:
+func _on_player_next_wave_started(wave) -> void:
 	moving_speed *= 1.1
 
 
