@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Shield:
-		body.take_damage() 
+		body.take_damage()
+		queue_free()
 		return
 	elif body is Player:
 		body.take_live()

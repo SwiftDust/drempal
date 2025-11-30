@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rxh8ogeepttc"]
+[gd_scene load_steps=4 format=3 uid="uid://rxh8ogeepttc"]
 
 [ext_resource type="Script" uid="uid://d1iuktkw5tnq" path="res://Cosmetics/HUD/hud.gd" id="1_t8fr7"]
-[ext_resource type="Texture2D" uid="uid://cwnwhlte1saol" path="res://icon.svg" id="2_d71x7"]
+[ext_resource type="Texture2D" uid="uid://ceu2mo43lop55" path="res://Cosmetics/HUD/heart filled.png" id="2_d71x7"]
+[ext_resource type="FontFile" uid="uid://cddji010cdhhe" path="res://UI/LuckiestGuy-Regular.ttf" id="2_li7hl"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_t8fr7")
@@ -18,18 +19,21 @@ size_flags_horizontal = 0
 
 [node name="ScoreLabel" type="Label" parent="MarginContainer/ScoreLiveContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_li7hl")
 theme_override_font_sizes/font_size = 32
 text = "score: 0"
 vertical_alignment = 1
 
 [node name="MultiplierLabel" type="Label" parent="MarginContainer/ScoreLiveContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_li7hl")
 theme_override_font_sizes/font_size = 32
 text = "multiplier: 1"
 vertical_alignment = 1
 
 [node name="WavesLabel" type="Label" parent="MarginContainer/ScoreLiveContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_li7hl")
 theme_override_font_sizes/font_size = 32
 text = "wave: 1"
 
@@ -39,6 +43,7 @@ theme_override_constants/separation = 14
 
 [node name="LivesLabel" type="Label" parent="MarginContainer/ScoreLiveContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_li7hl")
 theme_override_font_sizes/font_size = 32
 text = "lives:"
 

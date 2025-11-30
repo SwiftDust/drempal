@@ -9,6 +9,10 @@ class_name MainMenu extends Control
 @onready var credits = $Credits
 
 
+func _ready() -> void:
+	GlobalAudioStreamPlayer.play_gameloop_music()
+
+
 func _on_start_button_pressed() -> void:
 	transition_screen.transition()
 	if transition_screen.transition_finished:

@@ -21,6 +21,8 @@ func _ready() -> void:
 	add_child(shield)
 	shield.max_damage_updated.connect(_on_max_damage_updated)
 	
+	GlobalAudioStreamPlayer.play_gameloop_music()
+	
 	asteroid_timer.start()
 	game_started.emit()
 
@@ -64,8 +66,7 @@ func _on_player_next_wave_started(wave) -> void:
 
 
 func _on_max_damage_updated(max_damage) -> void:
-	while not player.is_on_floor():
-		await get_tree().process_frame
+	await get_tree().process_frame
 	
 	next_wave.visible = true
 	next_wave.update(_wave, asteroid_timer.wait_time, shield.max_damage)

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6tue2g5rkrkg"]
+[gd_scene load_steps=11 format=3 uid="uid://c6tue2g5rkrkg"]
 
 [ext_resource type="Texture2D" uid="uid://cm2fh35gxk7cq" path="res://icon.png" id="1_p8ccj"]
 [ext_resource type="Script" uid="uid://bq8sxnlxcdc78" path="res://UI/main_menu.gd" id="1_tk8dj"]
 [ext_resource type="PackedScene" uid="uid://bphpcpw5sh7ul" path="res://World/game_manager.tscn" id="2_d8nwk"]
+[ext_resource type="Theme" uid="uid://51fuverhhcj1" path="res://UI/main_menu.tres" id="3_cafmx"]
 [ext_resource type="PackedScene" uid="uid://cd3n4v44f55mq" path="res://UI/transition_screen.tscn" id="4_4cwpn"]
+[ext_resource type="FontFile" uid="uid://cddji010cdhhe" path="res://UI/LuckiestGuy-Regular.ttf" id="4_tcix6"]
+[ext_resource type="Texture2D" uid="uid://eej6us2dhx27" path="res://UI/pop up window.png" id="5_8ctay"]
+[ext_resource type="Texture2D" uid="uid://3vvtb8qbiu2i" path="res://UI/checkbox cross.png" id="6_ev3b6"]
+[ext_resource type="Texture2D" uid="uid://crnjfeuc1rqpp" path="res://UI/checkbox checked.png" id="7_k0a0m"]
+[ext_resource type="Texture2D" uid="uid://bjg8xfqq3l62q" path="res://UI/checkbox empty.png" id="8_2mudq"]
 
 [node name="Main Menu" type="Control" node_paths=PackedStringArray("transition_screen")]
 layout_mode = 3
@@ -30,6 +36,7 @@ offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 59
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -39,18 +46,21 @@ theme_override_constants/separation = 14
 [node name="Start Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_cafmx")
 theme_override_constants/h_separation = 12
 text = "start game"
 
 [node name="Exit Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_cafmx")
 theme_override_constants/h_separation = 12
 text = "exit"
 
 [node name="Credits Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_cafmx")
 theme_override_constants/h_separation = 12
 text = "credits
 "
@@ -58,11 +68,15 @@ text = "credits
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 14
+alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 111
+theme_override_fonts/font = ExtResource("4_tcix6")
+theme_override_font_sizes/font_size = 151
 text = "Drempal"
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/HBoxContainer2"]
@@ -88,55 +102,73 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Credits"]
+[node name="Panel" type="TextureRect" parent="Credits"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.5
-offset_top = -113.0
-offset_right = 105.5
-offset_bottom = 121.0
+offset_left = -321.0
+offset_top = -230.0
+offset_right = 321.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_8ctay")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="Credits/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = -89.5
-offset_right = 71.0
-offset_bottom = 89.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Credits:
-
-SwiftDust - Coding
-& Music
-KittyCat - Art
-
-(todo: change to
- texture panel)"
-
-[node name="Credits Close Button" type="Button" parent="Credits"]
+[node name="Credits Close Button" type="TextureButton" parent="Credits/Panel"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 60.0
-offset_top = -78.0
-offset_right = 78.0
-offset_bottom = -47.0
+offset_left = -65.0
+offset_top = 27.0
+offset_right = -25.0
+offset_bottom = 67.0
 grow_horizontal = 0
-text = "X"
+texture_normal = ExtResource("6_ev3b6")
+texture_pressed = ExtResource("7_k0a0m")
+texture_hover = ExtResource("8_2mudq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Credits/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -28.5
+offset_right = 177.0
+offset_bottom = 150.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "SwiftDust: coding and music
+(M4RT.NL)
+KittyCat - Art
+(KITTYCAT.HACKCLUB.APP)"
+
+[node name="Label" type="Label" parent="Credits/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.0
+offset_top = 92.0
+offset_right = 177.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 66
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Credits Button" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="Credits/Credits Close Button" to="." method="_on_credits_close_button_pressed"]
+[connection signal="pressed" from="Credits/Panel/Credits Close Button" to="." method="_on_credits_close_button_pressed"]

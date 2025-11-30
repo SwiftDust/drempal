@@ -19,6 +19,7 @@ config/icon="uid://cwnwhlte1saol"
 
 SignalLens="*res://addons/signal_lens/autoload/signal_lens_autoload.gd"
 TransitionScreen="res://UI/transition_screen.gd"
+GlobalAudioStreamPlayer="*res://Cosmetics/Music/audio_stream_player.tscn"
 
 [display]
 

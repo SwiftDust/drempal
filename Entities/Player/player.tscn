@@ -53,12 +53,13 @@ size = Vector2(191, 101)
 collision_layer = 3
 script = ExtResource("1_4ntmi")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.9999933, -47.40001)
 scale = Vector2(0.41015625, 0.41015625)
 sprite_frames = SubResource("SpriteFrames_7a1se")
 frame = 2
 frame_progress = 0.84762216
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -14.5)

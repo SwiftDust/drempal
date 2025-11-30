@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 
 @onready var heads_up_display = $"../HUD"
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 
 @export var FRICTION = 2000.0
@@ -42,7 +43,7 @@ func set_state(new_state: States) -> void:
 	if state == States.MOVING:
 		target_distance = STEP_DISTANCE
 	
-	## TODO: add animations for the state
+	animated_sprite_2d.play()
 
 
 func increment_score_multiplier():
@@ -106,9 +107,10 @@ func _physics_process(delta: float) -> void:
 		
 	if score > next_wave_at:
 		wave += 1
-		next_wave_at *= 1.5
+		next_wave_at = next_wave_at + next_wave_at * 2
 		scale = original_scale
 		next_wave_started.emit(wave)
+		print("Next wave at: ", next_wave_at)
 	
 	move_and_slide()
 	score += get_process_delta_time() * score_multiplier
