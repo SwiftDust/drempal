@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccnicinrqrxap"]
 
 [ext_resource type="Script" uid="uid://camer6dgca8dq" path="res://Entities/Shield/shield.gd" id="1_sbyj2"]
-[ext_resource type="Texture2D" uid="uid://cwnwhlte1saol" path="res://icon.svg" id="2_ybb2r"]
+[ext_resource type="Texture2D" uid="uid://cfn5eju58cyxr" path="res://Entities/Shield/shield.png" id="2_sbyj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb2r1"]
-size = Vector2(193, 20)
+size = Vector2(118, 46)
 
 [node name="Shield" type="StaticBody2D"]
 collision_layer = 3
@@ -12,9 +12,10 @@ script = ExtResource("1_sbyj2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -100)
-scale = Vector2(1.5, 0.13671874)
-texture = ExtResource("2_ybb2r")
+rotation = 1.5707964
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_sbyj2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -100)
+position = Vector2(5, -113)
 shape = SubResource("RectangleShape2D_qb2r1")

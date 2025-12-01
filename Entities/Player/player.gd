@@ -43,7 +43,7 @@ func set_state(new_state: States) -> void:
 	if state == States.MOVING:
 		target_distance = STEP_DISTANCE
 	
-	animated_sprite_2d.play()
+	animated_sprite_2d.play("default")
 
 
 func increment_score_multiplier():
@@ -56,6 +56,11 @@ func increment_score_multiplier():
 	score_multiplier += 1.5
 
 func take_live():
+	animated_sprite_2d.play("die")
+	await animated_sprite_2d.animation_finished
+	animated_sprite_2d.play_backwards("die")
+	await animated_sprite_2d.animation_finished
+	animated_sprite_2d.play("default")
 	lives -= 1
 	heads_up_display.remove_live()
 	if lives == 0:
@@ -106,6 +111,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		
 	if score > next_wave_at:
+		lives = 3
+		heads_up_display.add_lives_back()
 		wave += 1
 		next_wave_at = next_wave_at + next_wave_at * 2
 		scale = original_scale

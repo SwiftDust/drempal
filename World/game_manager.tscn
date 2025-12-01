@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bphpcpw5sh7ul"]
+[gd_scene load_steps=11 format=3 uid="uid://bphpcpw5sh7ul"]
 
 [ext_resource type="PackedScene" uid="uid://ccnicinrqrxap" path="res://Entities/Shield/shield.tscn" id="1_07ocg"]
 [ext_resource type="Script" uid="uid://cmhbrmkryjbxv" path="res://World/game_manager.gd" id="1_c5go4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://efyvciy4y5r" path="res://Entities/Drab/drab.tscn" id="7_thsql"]
 [ext_resource type="PackedScene" uid="uid://cw0u53iyvqqci" path="res://UI/next_wave.tscn" id="8_0pw6i"]
 [ext_resource type="PackedScene" uid="uid://mak0g3nvku5o" path="res://World/platform_spawner.tscn" id="8_thsql"]
+[ext_resource type="PackedScene" uid="uid://nisx1s5v5aij" path="res://UI/parallax_2d.tscn" id="9_0pw6i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_62w18"]
 distance = -102.0
@@ -18,6 +19,8 @@ asteroid_scene = ExtResource("4_nhtva")
 shield_scene = ExtResource("1_07ocg")
 
 [node name="HUD" parent="." instance=ExtResource("4_thsql")]
+
+[node name="Parallax2D" parent="." instance=ExtResource("9_0pw6i")]
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
@@ -40,7 +43,7 @@ position_smoothing_enabled = true
 [node name="Platform Spawner" parent="." instance=ExtResource("8_thsql")]
 
 [node name="Drab" parent="." instance=ExtResource("7_thsql")]
-position = Vector2(-385, 1149)
+position = Vector2(7, 1156)
 
 [node name="Next Wave" parent="." instance=ExtResource("8_0pw6i")]
 visible = false

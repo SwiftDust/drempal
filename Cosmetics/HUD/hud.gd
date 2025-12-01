@@ -23,3 +23,8 @@ func remove_live():
 		if live.visible == true:
 			live.visible = false
 			return
+
+
+func add_lives_back():
+	for live in lives:
+		live.visible == true 

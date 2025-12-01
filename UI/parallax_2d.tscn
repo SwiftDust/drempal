@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://nisx1s5v5aij"]
+
+[ext_resource type="Texture2D" uid="uid://btowfwrk2q2ab" path="res://UI/parallax background bottomlayer.png" id="1_2vm78"]
+[ext_resource type="Script" uid="uid://bkfbmoa440vbq" path="res://UI/parallax_2d.gd" id="1_81g2r"]
+[ext_resource type="Texture2D" uid="uid://js7ggcd2jn23" path="res://UI/parallax background toplayer.png" id="3_d0sss"]
+
+[node name="Parallax Background" type="Node2D"]
+script = ExtResource("1_81g2r")
+
+[node name="BottomLayer" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-69, 98)
+repeat_size = Vector2(0, 1526)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomLayer"]
+position = Vector2(1080, 1526)
+scale = Vector2(2, 2)
+texture = ExtResource("1_2vm78")
+
+[node name="TopLayer" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 1526)
+repeat_times = 2
+
+[node name="StarsRight" type="Sprite2D" parent="TopLayer"]
+position = Vector2(3189, 1477)
+texture = ExtResource("3_d0sss")
+
+[node name="StarsLeft" type="Sprite2D" parent="TopLayer"]
+position = Vector2(-642, 1516)
+texture = ExtResource("3_d0sss")
+
+[node name="StarsCenter" type="Sprite2D" parent="TopLayer"]
+position = Vector2(1080, 1526)
+texture = ExtResource("3_d0sss")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://rouyioqcdqm6"]
+[gd_scene load_steps=16 format=3 uid="uid://rouyioqcdqm6"]
 
 [ext_resource type="Script" uid="uid://wvxamnnoku8f" path="res://Entities/Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://bjq80nvel4rw6" path="res://Entities/Player/slime_spritesheet.png" id="2_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://jiqdrv8glp24" path="res://Entities/Player/dying_spritesheet.png" id="3_lu8i8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lu8i8"]
 atlas = ExtResource("2_3uyv8")
@@ -21,6 +22,26 @@ region = Rect2(1536, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
 atlas = ExtResource("2_3uyv8")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a1se"]
+atlas = ExtResource("3_lu8i8")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lub02"]
+atlas = ExtResource("3_lu8i8")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1y6q"]
+atlas = ExtResource("3_lu8i8")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap3xn"]
+atlas = ExtResource("3_lu8i8")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iplt1"]
+atlas = ExtResource("3_lu8i8")
 region = Rect2(2048, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7a1se"]
@@ -44,6 +65,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a1se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lub02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1y6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap3xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iplt1")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyv8"]
@@ -57,8 +98,6 @@ script = ExtResource("1_4ntmi")
 position = Vector2(-0.9999933, -47.40001)
 scale = Vector2(0.41015625, 0.41015625)
 sprite_frames = SubResource("SpriteFrames_7a1se")
-frame = 2
-frame_progress = 0.84762216
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

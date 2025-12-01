@@ -1,21 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://efyvciy4y5r"]
 
-[ext_resource type="Texture2D" uid="uid://cwnwhlte1saol" path="res://icon.svg" id="1_eufp0"]
 [ext_resource type="Script" uid="uid://bb2mbg5coa7fi" path="res://Entities/Drab/drab.gd" id="1_uw10s"]
+[ext_resource type="Texture2D" uid="uid://clqg2qoxpevp1" path="res://Entities/Drab/drab.png" id="2_uw10s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw10s"]
-size = Vector2(2200, 642)
+size = Vector2(2942, 642)
 
 [node name="Drab" type="Area2D"]
 script = ExtResource("1_uw10s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1099.5, 327)
-scale = Vector2(17.195313, 5.078125)
-texture = ExtResource("1_eufp0")
+position = Vector2(738.50006, -817.1246)
+scale = Vector2(1.3662037, 0.7219286)
+texture = ExtResource("2_uw10s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1097, 320)
+position = Vector2(726, 320)
 shape = SubResource("RectangleShape2D_uw10s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

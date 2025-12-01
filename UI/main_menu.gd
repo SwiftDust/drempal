@@ -8,9 +8,26 @@ class_name MainMenu extends Control
 
 @onready var credits = $Credits
 @onready var score_node = $Score
+@onready var hint_node = $Hint
+
+
+var hints := [
+	"if an asteroid touches your shield
+	it will immediately disappear!",
+	"like most things, your shield
+	isn't invincible...",
+	"this is your sign to give us 5 stars :)",
+	"you should share your high score in the comments!",
+	"hello! refresh for some hints
+	 (or play a round and come back :))",
+	"music is 100% home-made (i'm so sorry for your ears)",
+	"no AI was used to create our art™ (cough cough COD)"
+]
 
 
 func _ready() -> void:
+	var hint = hints.pick_random()
+	hint_node.text = hint
 	ScoreChanger.score_changed.connect(_on_score_changed)
 	GlobalAudioStreamPlayer.play_gameloop_music()
 	_on_score_changed(ScoreChanger.score, ScoreChanger.highscore)
@@ -35,4 +52,4 @@ func _on_credits_close_button_pressed() -> void:
 
 
 func _on_score_changed(score: int, highscore: int) -> void:
-	score_node.text = "Score: " + str(score) + " - High Score: " + str(highscore)
+	score_node.text = "Score: " + str(score) + " — High Score: " + str(highscore)

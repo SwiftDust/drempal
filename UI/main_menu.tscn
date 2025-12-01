@@ -109,6 +109,18 @@ offset_bottom = 377.0
 theme_override_font_sizes/font_size = 21
 text = "Score: 0 - Highscore: 0"
 
+[node name="Hint" type="Label" parent="."]
+layout_mode = 0
+offset_left = 851.00006
+offset_top = 133.0
+offset_right = 1073.6565
+offset_bottom = 171.36964
+rotation = 0.38920844
+theme_override_font_sizes/font_size = 11
+text = "hint: if an asteroid touches your shield
+it will immediately disappear!"
+horizontal_alignment = 1
+
 [node name="Transition Screen" parent="." instance=ExtResource("4_4cwpn")]
 
 [node name="Credits" type="Control" parent="."]
