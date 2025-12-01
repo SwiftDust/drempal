@@ -110,8 +110,8 @@ func _physics_process(delta: float) -> void:
 		next_wave_at = next_wave_at + next_wave_at * 2
 		scale = original_scale
 		next_wave_started.emit(wave)
-		print("Next wave at: ", next_wave_at)
 	
 	move_and_slide()
 	score += get_process_delta_time() * score_multiplier
+	ScoreChanger.set_score(score)
 	heads_up_display.update_score(int(score), score_multiplier, wave)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlde60i248qjs"]
+
+[ext_resource type="Script" uid="uid://cjlxu22p8clfl" path="res://score_changer.gd" id="1_3u2qx"]
+
+[node name="ScoreChanger" type="Node"]
+script = ExtResource("1_3u2qx")

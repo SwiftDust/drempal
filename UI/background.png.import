@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyl2snsitnom7"
-path="res://.godot/imported/button wide idle.png-38e84d0589a42e1e2fa3e110e13d7183.ctex"
+uid="uid://dm623ib0s18y3"
+path="res://.godot/imported/background.png-86edb4dc41d3f536b329719f06da12c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/button wide idle.png"
-dest_files=["res://.godot/imported/button wide idle.png-38e84d0589a42e1e2fa3e110e13d7183.ctex"]
+source_file="res://UI/background.png"
+dest_files=["res://.godot/imported/background.png-86edb4dc41d3f536b329719f06da12c6.ctex"]
 
 [params]
 

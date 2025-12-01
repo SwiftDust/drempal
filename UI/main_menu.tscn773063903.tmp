@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6tue2g5rkrkg"]
+[gd_scene load_steps=11 format=3 uid="uid://c6tue2g5rkrkg"]
 
 [ext_resource type="Texture2D" uid="uid://cm2fh35gxk7cq" path="res://icon.png" id="1_p8ccj"]
 [ext_resource type="Script" uid="uid://bq8sxnlxcdc78" path="res://UI/main_menu.gd" id="1_tk8dj"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://3vvtb8qbiu2i" path="res://UI/checkbox cross.png" id="6_ev3b6"]
 [ext_resource type="Texture2D" uid="uid://crnjfeuc1rqpp" path="res://UI/checkbox checked.png" id="7_k0a0m"]
 [ext_resource type="Texture2D" uid="uid://bjg8xfqq3l62q" path="res://UI/checkbox empty.png" id="8_2mudq"]
-[ext_resource type="Texture2D" uid="uid://dm623ib0s18y3" path="res://UI/background.png" id="11_tcix6"]
 
 [node name="Main Menu" type="Control" node_paths=PackedStringArray("transition_screen")]
 layout_mode = 3
@@ -22,20 +21,6 @@ grow_vertical = 2
 script = ExtResource("1_tk8dj")
 game_scene = ExtResource("2_d8nwk")
 transition_screen = NodePath("Transition Screen")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -111.0
-offset_right = -3.0
-offset_bottom = 517.3236
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_tcix6")
-expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

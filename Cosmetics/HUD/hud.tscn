@@ -39,7 +39,7 @@ text = "wave: 1"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/ScoreLiveContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 4
 
 [node name="LivesLabel" type="Label" parent="MarginContainer/ScoreLiveContainer/VBoxContainer"]
 layout_mode = 2

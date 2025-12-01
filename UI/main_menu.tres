@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://51fuverhhcj1"]
 
 [ext_resource type="FontFile" uid="uid://cddji010cdhhe" path="res://UI/LuckiestGuy-Regular.ttf" id="1_ibop6"]
-[ext_resource type="Texture2D" uid="uid://jmbjbpfnu4ls" path="res://UI/button wide hover.png" id="1_iucw3"]
-[ext_resource type="Texture2D" uid="uid://dyl2snsitnom7" path="res://UI/button wide idle.png" id="2_ibop6"]
+[ext_resource type="Texture2D" uid="uid://cj3prd6djyln5" path="res://UI/button wider hover.png" id="2_ibop6"]
+[ext_resource type="Texture2D" uid="uid://haqu1ubasspd" path="res://UI/button wider idle.png" id="3_ibop6"]
 [ext_resource type="Texture2D" uid="uid://c16br6w42ut8a" path="res://UI/button wider clicked.png" id="3_ys7p0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjay5"]
@@ -20,10 +20,10 @@ corner_detail = 5
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ec1lw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bpm4f"]
-texture = ExtResource("1_iucw3")
+texture = ExtResource("2_ibop6")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7137b"]
-texture = ExtResource("2_ibop6")
+texture = ExtResource("3_ibop6")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_voib7"]
 texture = ExtResource("3_ys7p0")
