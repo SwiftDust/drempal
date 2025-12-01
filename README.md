@@ -1,6 +1,6 @@
 ## Drempal: dodge the asteroids!
 
-![image-1.png]
+![](image-1.png)
 
 Thanks for stopping by! This is my first full game coded by only me in Godot, it's been
 a blast!
